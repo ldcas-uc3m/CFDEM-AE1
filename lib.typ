@@ -3,6 +3,8 @@
 // notice you can do whatever you want with this stuff. If we meet some day, and
 // you think this stuff is worth it, you can buy me a beer in return.
 
+// LTeX: enabled=false
+
 
 #let verdeudima = rgb("#004d35")
 #let rojoudima = rgb("#ec1d23")
@@ -197,7 +199,7 @@
 /// - toc (boolean): Whether to show the table of contents (`true`) or not (`false`)
 /// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
 /// - appendixes (content, none): Set of appendixes.
-/// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
+/// - chapter-on-new-page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
 /// - date (datetime, none): Report date to put in the cover page, e.g. `datetime.today()`. If `none`, no date will be displayed.
 /// - date-format (str, auto): Date format syntax (see https://typst.app/docs/reference/foundations/datetime/#format). Only applies if `date` is not `none`.
 /// - doc (content): Document contents
@@ -217,7 +219,7 @@
   figure-spacing: 0.75em,
   bibliography-content: none,
   appendixes: none,
-  chapter_on_new_page: true,
+  chapter-on-new-page: true,
   date: none,
   date-format: auto,
   doc,
@@ -249,7 +251,7 @@
   show heading: set text(verdeudima)
   show heading: set block(above: 1.4em, below: 1em)
   show heading.where(level: 1): it => {
-    if chapter_on_new_page { pagebreak(weak: true) }
+    if chapter-on-new-page { pagebreak(weak: true) }
     it
   }
 
