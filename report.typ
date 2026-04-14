@@ -34,7 +34,7 @@
 #show table: set par(justify: false)
 
 
-#import "problems.typ": NON-SUMMARY-CATEG, categ-map, problems
+#import "problems.typ": NON-SUMMARY-CATEG, categ-map, diff-level, problems
 
 
 #[
@@ -51,7 +51,7 @@
       align: horizon + center,
       columns: (3.5cm, ..for i in range(problems.len()) { (auto,) }),
       // columns: problems.len() + 1,
-      ..table-header([*Nº de problema*], ..for i in range(
+      table.header([*Nº de problema*], ..for i in range(
         1,
         problems.len() + 1,
       ) {
@@ -70,7 +70,14 @@
             if category == "curso" {
               ([4º ESO\ (Matemáticas #p.at(category))],)
             } else {
-              (p.at(category).first(),)
+              (
+                {
+                  p.at(category).first()
+                  if category == "nivel" [
+                    (#diff-level(p.at(category).first()))
+                  ]
+                },
+              )
             }
           },
         )) { (row) }
@@ -91,7 +98,7 @@
 
     // desarrollo
     if category in NON-SUMMARY-CATEG {
-      emph(p.at(category))
+      p.at(category)
     } else {
       p.at(category).last()
     }

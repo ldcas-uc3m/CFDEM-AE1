@@ -239,8 +239,8 @@
 
   set par(
     leading: 0.65em,
-    spacing: 1em,
-    first-line-indent: 1.8em,
+    spacing: 1.2em,
+    // first-line-indent: 1.8em,
     justify: true,
   )
 
