@@ -172,9 +172,9 @@
         una empresa.],
     ),
     tipo: (
-      rep.ca,
+      rep.cc,
       [El problema requiere proporcionar una fórmula como solución al problema,
-        por lo que es #fmt(rep.ca).],
+        por lo que es #fmt(rep.cc).],
     ),
     nivel: (
       "5",
