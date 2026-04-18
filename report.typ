@@ -51,12 +51,15 @@
       align: horizon + center,
       columns: (3.5cm, ..for i in range(problems.len()) { (auto,) }),
       // columns: problems.len() + 1,
-      table.header([*Nº de problema*], ..for i in range(
-        1,
-        problems.len() + 1,
-      ) {
-        (strong[#i],)
-      }),
+      table.header(
+        [*Nº de problema*],
+        ..for i in range(
+          1,
+          problems.len() + 1,
+        ) {
+          (strong[#i],)
+        },
+      ),
 
       // build table
       ..for row in categ-map
@@ -80,7 +83,7 @@
               )
             }
           },
-        )) { (row) }
+        )) { (row) },
     ),
   )
 ]
@@ -94,7 +97,10 @@
   for category in categ-map.keys() {
     if category == "curso" { continue }
 
-    heading(categ-map.at(category), level: 3)
+    heading(
+      categ-map.at(if category == "saber" { "curso" } else { category }),
+      level: 3,
+    )
 
     // desarrollo
     if category in NON-SUMMARY-CATEG {

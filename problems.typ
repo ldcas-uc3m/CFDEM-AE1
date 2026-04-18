@@ -67,9 +67,14 @@
       ctg.qty,
       [El estudiante debe realizar cálculos cuantitativos y evaluar los
         resultados de los mismos, así como las relaciones con otras cantidades.
-        Por ello pertenece a la categoría de #fmt(ctg.qty)],
+        Por ello pertenece a la categoría de #fmt(ctg.qty).],
     ),
-    proceso: (proc.emp, []),
+    proceso: (
+      proc.emp,
+      [El estudiante debe realizar cálculos sencillos para resolver el problema,
+        así como diseñar e implementar una estrategia pare encontrar la
+        solución, por lo que se utiliza el proceso de #fmt(proc.emp).],
+    ),
     tipo: (
       rep.s,
       [El estudiante debe de seleccionar las respuectas correctas de entre las
@@ -141,13 +146,69 @@
     curso: "A y B",
   ),
   (
-    categoria: (ctg.inc, []),
-    proceso: ("", []),
-    tipo: ("", []),
-    contexto: ("", []),
-    nivel: ("", []),
-    enun: [],
-    sol: [],
+    categoria: (
+      ctg.rel,
+      [El problema presenta una gráfica que representa patrones climáticos, y
+        requiere interpretar los cambios y relaciones entre ellos, por lo que
+        entra en la categoría de #fmt(ctg.rel).],
+    ),
+    proceso: (
+      proc.int,
+      [El estudiante debe interpretar la información representada gráficamente y
+        evaluar un resultado matemático (máximos y mínimos) en el contexto del
+        problema, por lo que se usa el proceso de #fmt(proc.int).],
+    ),
+    tipo: (
+      rep.s,
+      [El estudiante debe seleccionar las opciones de verdadero o falso entre
+        las afirmaciones propuestas, por lo que es #fmt(rep.s).],
+    ),
+    contexto: (
+      ctx.soc,
+      [El problema trata de meteorología de ciudades, por lo cual es contexto
+        #fmt(
+          ctx.soc,
+        ).],
+    ),
+    nivel: (
+      "1b",
+      [El estudiante debe responder a una pregunta en un contexto fácilmente
+        entendible, con una representación simple (temperatura a lo largo del
+        tiempo), y debe reconocer cuando una información debe ignorarse
+        (temperatura percibida), por lo que se le otorga un nivel de dificultad
+        de *1b*.],
+    ),
+    enun: [
+      El siguiente gráfico muestra las temperaturas máximas y mínimas promedio
+      diarias de las ciudades de Madrid y Zaragoza. Las líneas delgadas
+      discontínuas representan las temperaturas percibidas correspondientes.
+
+      #show figure.caption: it => emph(it.body)
+      #show figure.caption: set align(left)
+
+      #figure(image("img/temperatura.svg", width: 80%), caption: [Fuente: #link(
+          "https://es.weatherspark.com/compare/y/36848~43119/Comparaci%C3%B3n-del-tiempo-promedio-en-Madrid-y-Zaragoza",
+        )[WeatherSpark.com]])
+
+      Usando la información proporcionada por el grafo, marca como verdaderas o
+      falsas las siguientes afirmaciones:
+
+      #set enum(numbering: "a)")
+      + Los meses de verano son los más calurosos en ambas ciudades.
+      + La temperatura máxima en Zaragoza es siempre superior a la de Madrid.
+      + La temperatura mínima promedio anual de Madrid es inferior a la de
+        Zaragoza.
+    ],
+    sol: [
+      #set enum(numbering: "a)")
+      + Las temperaturas más altas se registran en los meses de junio, julio,
+        agosto, y septiembre, por lo que la afirmación es *verdadera*.
+      + La temperatura máxima de Madrid es de 33 ºC, mientras que la de Zaragoza
+        es 32 ºC, lo cual hace la afirmación *falsa*.
+      + Todos los días la temperatura mínima de Madrid es inferior a la de
+        Zaragoza, lo cual hace la afirmación *verdadera*.
+
+    ],
     saber: ("", []),
     curso: "A y B",
   ),
@@ -220,22 +281,28 @@
       #figure(include "diagrams/ex3.typ")
 
       El problema se puede resolver aplicando el Teorema de Pitágoras al
-      triángulo $A C B$:
+      triángulo $A B C$:
 
       $ a^2 + b^2 = c^2 $
-      $ a^2 + (2a)^2 = (2r)^2 $
-      $ 5a^2 = 4r^2 $
-      $ a = sqrt((4r^2)/5) = (2r)/sqrt(5) $
+      $ a^2 + (2a)^2 = (2r)^2 => 5a^2 = 4r^2 $
+      $ therefore a = sqrt((4r^2)/5) = (2r)/sqrt(5) $
 
       También se puede resolver mediante la ecuación fundamental de la
-      trigonometría y la definición de seno y coseno:
+      trigonometría (la cual se deriva del Teorema de Pitágoras) y las
+      definiciónes de seno y coseno:
+
+      #import "@preview/intextual:0.1.1": flushr, intertext-rule
+      #show: intertext-rule
 
       $ sin(alpha) = a/c = a/(2r) $
       $ cos(alpha) = b/c = (cancel(2)a)/(cancel(2)r) $
       $ sin^2(alpha) + cos^2(alpha) = 1 $
       $ (a/(2r))^2 + (a/r)^2 = 1 => a^2/(4r^2) + a^2/r^2 = 1 $
-      $ a^2/r^2 + (4a^2)/r^2 = 4 => (5a^2)/r^2 = 4 $
-      $ a = sqrt((4r^2)/5) = (2r)/sqrt(5) $
+      $
+        a^2/r^2 + (4a^2)/r^2 = 4 => (5a^2)/r^2 = 4
+        #flushr[(multiplica por $4$)]
+      $
+      $ therefore a = sqrt((4r^2)/5) = (2r)/sqrt(5) $
 
 
     ],
@@ -243,12 +310,15 @@
     curso: "A",
   ),
   (
-    categoria: (ctg.rel, []),
-    proceso: ("", []),
-    tipo: ("", []),
-    contexto: ("", []),
+    categoria: (ctg.inc, []),
+    proceso: (proc.raz, []),
+    tipo: (rep.ca, []),
+    contexto: (ctx.cif, []),
     nivel: ("", []),
-    enun: [],
+    enun: [
+
+      Justifica tu respuesta.
+    ],
     sol: [],
     saber: ("", []),
     curso: "A y B",
