@@ -59,6 +59,15 @@
   ca: "Construida abierta",
 )
 
+#let sab = (
+  num: "Sentido numérico",
+  med: "Sentido de la medida",
+  esp: "Sentido espacial",
+  alg: "Sentido algebraico",
+  est: "Sentido estocástico",
+  soc: "Sentido socioafectivo",
+)
+
 #let fmt(sol) = strong(lower(sol))
 
 #let problems = (
@@ -142,7 +151,19 @@
       'Pareja'. Como deben pagar los dos lo mismo, sólo las opciones a) y c) son
       las que ambos se pueden permitir.
     ],
-    saber: ("", []),
+    saber: (
+      sab.num,
+      [El problema requiere la aplicación de conocimiento sobre cálculo en un
+        contexto de transacciones monetarias, desarrollando destrezas en la
+        comprensión, representación y uso flexible de los números y operaciones.
+        Por ello, se corresponde con el #fmt(sab.num).
+
+        Este problema está diseñado para 4º de ESO (*Matemáticas A y B*), ya que
+        exige al estudiante no solo aplicar cálculos rutinarios, sino también
+        seleccionar y valorar una estrategia para determinar qué opciones son
+        asequibles, obteniendo todas las soluciones posibles que cumplen con las
+        condiciones dadas.],
+    ),
     curso: "A y B",
   ),
   (
@@ -209,7 +230,19 @@
         Zaragoza, lo cual hace la afirmación *verdadera*.
 
     ],
-    saber: ("", []),
+    saber: (
+      sab.est,
+      [El problema requiere el análisis y la interpretación de datos
+        representados gráficamente para evaluar afirmaciones y tomar decisiones
+        basadas en la información estadística presentada. Por ello, se
+        corresponde con el #fmt(sab.est).
+
+        Este problema es adecuado para 4º de ESO (*Matemáticas A y B*), ya que
+        requiere que el estudiante reformule la información de un gráfico para
+        validar o descartar afirmaciones, seleccionando los datos relevantes y
+        evaluando su pertinencia para llegar a una conclusión sobre todas las
+        posibles interpretaciones.],
+    ),
     curso: "A y B",
   ),
   (
@@ -306,21 +339,114 @@
 
 
     ],
-    saber: ("", []),
+    saber: (
+      (sab.alg, sab.esp),
+      [El problema requiere el uso del lenguaje algebraico para expresar
+        relaciones de dependencia entre variables (el tamaño del logo y el radio
+        de la tapa) y modelizar una situación geométrica con expresiones
+        simbólicas. También involucra el sentido espacial al identificar y
+        razonar con las propiedades geométricas de las figuras. Por ello, se
+        corresponde con el #fmt(sab.alg) y el #fmt(sab.esp).
+
+        Este problema se ajusta a 4º de ESO (*Matemáticas A*), ya que demanda la
+        capacidad de reformular un problema de la vida real en términos
+        matemáticos, seleccionar y aplicar estrategias de modelización y obtener
+        una solución general en forma de expresión algebraica, valorando la
+        idoneidad del modelo geométrico y algebraico utilizado.],
+    ),
     curso: "A",
   ),
   (
-    categoria: (ctg.inc, []),
-    proceso: (proc.raz, []),
-    tipo: (rep.ca, []),
-    contexto: (ctx.cif, []),
-    nivel: ("", []),
+    categoria: (
+      ctg.inc,
+      [El problema requiere que el estudiante interprete y evalúe datos
+        presentados en una tabla de doble entrada para sacar conclusiones en una
+        situación con incertidumbre, por lo que pertenece a la categoría de
+        #fmt(ctg.inc).],
+    ),
+    proceso: (
+      proc.raz,
+      [El estudiante debe analizar la tabla de datos, identificar las relaciones
+        entre las variables y construir un argumento lógico para justificar su
+        conclusión sobre la efectividad del tratamiento. Esto requiere #fmt(
+          proc.raz,
+        ).],
+    ),
+    tipo: (
+      rep.ca,
+      [El estudiante debe elaborar una respuesta abierta y justificada, basada
+        en el análisis de los datos, por lo que es de tipo #fmt(rep.ca).],
+    ),
+    contexto: (
+      ctx.cif,
+      [El problema se sitúa en el marco de un estudio sobre la efectividad de un
+        fármaco, lo que corresponde a un contexto #fmt(ctx.cif).],
+    ),
+    nivel: (
+      "2",
+      [El estudiante debe extraer información de una tabla de doble entrada y
+        utilizar una estrategia simple (cálculo de proporciones) para resolver
+        el problema. La tarea requiere una interpretación literal de los
+        resultados para determinar la efectividad del fármaco, lo que se ajusta
+        a un nivel de dificultad de *2*.],
+    ),
     enun: [
+      Un equipo de investigación está estudiando la efectividad de un nuevo
+      fármaco para tratar una enfermedad. Para ello, seleccionaron una muestra
+      de 200 pacientes y los dividieron en dos grupos: uno que recibió el
+      fármaco y otro que recibió un placebo. Los resultados del estudio se
+      resumen en la siguiente tabla:
 
-      Justifica tu respuesta.
+      #figure(
+        table(
+          columns: 3,
+          align: center,
+          table.header([*Tratamiento*], [*Mejoría*], [*Sin mejoría*]),
+          [Fármaco], [70], [30],
+          [Placebo], [40], [60],
+        ),
+      )
+
+      Basándote en los datos de la tabla, ¿consideras que el fármaco es
+      efectivo? Justifica tu respuesta utilizando los datos para apoyar tu
+      razonamiento.
     ],
-    sol: [],
-    saber: ("", []),
+    sol: [
+      Para determinar si el fármaco es efectivo, debemos comparar la proporción
+      de pacientes que mejoraron en el grupo que recibió el fármaco con la
+      proporción de pacientes que mejoraron en el grupo que recibió el placebo.
+
+      Primero, calculamos el total de pacientes en cada grupo:
+      - Grupo del Fármaco: $70 + 30 = 100$ pacientes.
+      - Grupo del Placebo: $40 + 60 = 100$ pacientes.
+
+      Ahora, calculamos el porcentaje de mejoría en cada grupo.
+
+      Porcentaje de mejoría con el fármaco:
+      $ (70 / 100) * 100% = 70% $
+
+      Porcentaje de mejoría con el placebo:
+      $ (40 / 100) * 100% = 40% $
+
+      El 70% de los pacientes que recibieron el fármaco mostraron una mejoría,
+      en comparación con solo el 40% de los que recibieron el placebo. Esto
+      indica que la probabilidad de mejorar es considerablemente mayor si se
+      toma el fármaco. Por lo tanto, basándonos en estos datos, podemos concluir
+      que el fármaco es efectivo para tratar la enfermedad.
+    ],
+    saber: (
+      sab.est,
+      [El problema requiere el análisis y la interpretación de datos de una
+        tabla para hacer inferencias y tomar decisiones basadas en información
+        estadística, evaluando críticamente la efectividad de un tratamiento.
+        Por ello, se corresponde con el #fmt(sab.est).
+
+        Este problema es apropiado para 4º de ESO (*Matemáticas A y B*), ya que
+        implica la interpretación y reformulación de datos de una tabla para
+        construir un argumento, seleccionando una estrategia de análisis
+        (comparación de proporciones) y valorando su eficacia para obtener una
+        conclusión justificada sobre la efectividad del fármaco.],
+    ),
     curso: "A y B",
   ),
 )

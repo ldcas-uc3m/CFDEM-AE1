@@ -75,7 +75,13 @@
             } else {
               (
                 {
-                  p.at(category).first()
+                  let val = p.at(category).first()
+                  // handle multiple values
+                  if type(val) == array {
+                    val.join([, ])
+                  } else {
+                    val
+                  }
                   if category == "nivel" [
                     (#diff-level(p.at(category).first()))
                   ]
@@ -109,4 +115,5 @@
       p.at(category).last()
     }
   }
+  pagebreak(weak: true)
 }
